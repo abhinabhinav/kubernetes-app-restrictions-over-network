@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cache-service
+  namespace: default  # Assuming everything is in the default namespace
+spec:
+  selector:
+    app: cache  # This should match the labels used in your cache deployment
+  ports:
+    - port: 6379  # Redis default port
+      targetPort: 6379
+  clusterIP: None  # This creates a headless service, allowing pods to directly talk to each other
